@@ -12,6 +12,8 @@ void changeRowColumn(int** matrix, int n, int m, int k); //task11
 
 int getRowNumWithMaxAvg(int** matrix, int n, int m);
 
+void fillNull(int** matrix, int n, int m);
+
 int main() {
 	srand(time(NULL));
 	int size1 = 5;
@@ -34,7 +36,15 @@ int main() {
 	int index1 = getRowNumWithMaxAvg(matrix2, size2, size2);
 	cout << "Row index with max average: " << index1 + 1 << endl;
 
-
+	// task 3
+	int size3 = 5;
+	int** matrix3 = formMatrix(size3, size3);
+	fillMatrix(matrix3, size3, size3);
+	cout << "Matrix: " << endl;
+	printMatrix(matrix3, size3, size3);
+	cout << "Fill with nills" << endl;
+	fillNull(matrix3, size3, size3);
+	printMatrix(matrix3, size3, size3);
 	return 0;
 }
 
@@ -110,6 +120,17 @@ void changeRowColumn(int** matrix, int n, int m, int k)
 			}
 		}
 		return rowIndex;
+	}
+
+    void fillNull(int** matrix, int n, int m)
+	{
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				if (i < n / 2 && (j >= i && j < n - i)) {
+					matrix[i][j] = 0;
+				}
+			}
+		}
 	}
 
 	
