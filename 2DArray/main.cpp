@@ -37,7 +37,7 @@ int main() {
 	cout << "Row index with max average: " << index1 + 1 << endl;
 
 	// task 3
-	int size3 = 5;
+	int size3 = 6;
 	int** matrix3 = formMatrix(size3, size3);
 	fillMatrix(matrix3, size3, size3);
 	cout << "Matrix: " << endl;
@@ -126,7 +126,18 @@ void changeRowColumn(int** matrix, int n, int m, int k)
 	{
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
-				if (i < n / 2 && (j >= i && j < n - i)) {
+				// 5
+				/*if (i < n / 2 && (j >= i && j >= n - 1 - i)) {
+					matrix[i][j] = 0;
+				}
+				else if (i >= n / 2 && (j >= n - 1 - i && j <= i)) {
+					matrix[i][j] = 0;
+				}*/
+				//6
+				if (j < n / 2 && (j <= i && j <= n - 1 - i)) {
+					matrix[i][j] = 0;
+				}
+				else if (j >= n / 2 && (j >= n - 1 - i && j >= i)) {
 					matrix[i][j] = 0;
 				}
 			}
